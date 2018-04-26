@@ -432,10 +432,7 @@ In this work blockchain technology is used. The structure of blockchain ensure t
 
 
 \section{Blockchain Technology}
-After the rise of Bitcoin \cite{nakamoto2008bitcoin}, its underlying structure,
-the blockchain technology, has been applied to a variety of usecases
-ranging from authentication to smart contracts (using Ethereum). Blockchain
-is based on append-only ledger, a growing list of records (called blocks) which are linked and secured using cryptography. The ledger can be viewed by all participating nodes and the updates are permitted only after the consensum of the network. Each block typically contains a cryptographic hash of the previous block, a timestamp and transaction data. Thanks to its structure and the proof-of-work required to create a new block, a blockchain is inherently resistant to modification of the data. A simple example of blockchain is shown in Figure 2.\\
+After the rise of Bitcoin \cite{nakamoto2008bitcoin}, its underlying structure, the blockchain technology, has been applied to a variety of usecases ranging from authentication \cite{sundararajanonline} (using Ethereum and Smart Contracts) to medical reports\cite{azaria2016medrec}. Blockchain is based on append-only ledger, a growing list of records (called blocks) which are linked and secured using cryptography. The ledger can be viewed by all participating nodes and the updates are permitted only after the consensum of the network. Each block typically contains a cryptographic hash of the previous block, a timestamp and transaction data. Thanks to its structure and the proof-of-work required to create a new block, a blockchain is inherently resistant to modification of the data. A simple example of blockchain is shown in Figure 2.\\
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=3.8in]{images/blockchain.jpg}
@@ -448,10 +445,35 @@ The presented system relies on Ethereum, an open-source, public, blockchain-base
 
 
 \subsection{Ethereum}
+Ethereum \cite{wood2014ethereum} is described as ”a transactional singleton machine with shared-state”. 
+The distributed ledger can be view as a distributed virtual machine which records transactions and state changes.
+The blockchain is kept alive by the miners, nodes which have three main tasks:
+\begin{itemize}
+	\item Verifing the transactions being sent, through the consensum algorithm which is similar to other blockchains, removing the need of central authority;
+	\item Checking if the sender has sufficient gas, the Ethereum's native cryptocurrency, to transfer to the receiver;
+	\item Running the function called by the sender and thus to modify the blockchain state accordingly. 
+\end{itemize}
+
+In regards to the third point, we see the most important feature of Ethereum: encoding smart contracts. 
+
 
 \subsubsection{Smart Contracts}
 
+Smart contracts describe functions, which can be called by nodes participating in the blockchain, and states which can be changed by the nodes. 
+The functions run in the Ethereum Virtual Machine (EVM)
+which is described as a ”\textit{quasi}-Turing complete” computer able to execute code of any complexity. The \textit{quasi} qualification comes from the
+fact that the computation is intrinsically bounded to \textit{gas}, which limits the total amount of computation
+done.If the gas transferred to the miner for the function execution is less than the required amount, then the transaction is not mined.  
+\\The contract can use memory and storage to save data. It can use any amount of memory (paying gas) during executing its code, but when execution stops, the entire content of the memory is wiped. The storage on the other hand is persisted into the blockchain itself. It can be changed, but all the changes will be recorded in the ledger.\\
+In the presented sytem, thanks of its persistence and (im)mutability, storage will be used to store and share contents. 
+
+
 \subsection{Benefits}
+In this paragraph, the benefits of using blockchain are discussed. Building the content delivery system on the blockchain it will inherit all the benefits.
+\begin{itemize}
+	\item askjda https://www.entrepreneur.com/article/306420
+	contenuto...
+\end{itemize} 
 
 \section{System Design}
 \subsection{Overview}
