@@ -485,9 +485,10 @@ In this paragraph, the benefits of using blockchain are discussed. Building the 
 \end{itemize} 
 
 \section{System Design}
-In this section is presented the developed system to distribute and to check integrity of the contents. Firstly an high-level overview is shown. Secondly more details about the architecture are provided. Lastly benefits and drowbacks of the system are discussed.
+In this section is presented the developed system to distribute and check integrity of the contents. Firstly an high-level overview is shown. Secondly more details about the architecture are provided. Lastly benefits and drowbacks of the system are discussed.
+
 \subsection{Overview}
-Figure \ref{fig:SystemOverview} shows high-level view of how the presented system distributes the contents on the servers and permits to client to check integrity.
+Figure \ref{fig:SystemOverview} shows high-level view of how the presented system distributes the contents on the Servers and permits to Client to check integrity.
 
 
 \begin{figure}[!h]
@@ -498,21 +499,31 @@ Figure \ref{fig:SystemOverview} shows high-level view of how the presented syste
 	\label{fig:SystemOverview}
 \end{figure} 
 
+The system wants to resolve trust issues between Origin and Edge Servers, since the last can receive altered contents, and between Servers and Clients, as Server can send different content from the requested one. The key idea is to use two different blockchains: the \textit{Contents Blockchain} and the \textit{Hashes Blockchain}.
+\subsubsection{Contents Blockchain}
+The proposal is to build the CDN on a blockchain, the \textit{Contents Blockchain}. This means each Edge Server is a node of the blockchain. The Origin Server is no more required, since it is possible to add a content from every node (Edge Server) as long as it is authorizated, and the content will be automatically distributed on each Server thanks to blockchain technology. To authorize the upload of the contents an user system is used. Since the blockchain is always visible from every partecipant, and every partecipant has a public address, which is a public and private key pair, it is enough to store in the blockchain the addresses of who can upload the contents, and after checking who is requesting the upload, the transaction can be executed or not. Two kind of user are permitted: Admin and Superadmin. Admins can upload/remove/edit the contents while Superadmin can also create other Admins. 
 
+\subsubsection{Hashes Blockchain}
+The \textit{Hashes Blockchain} is the key to check the integrity of received contents. Thanks to hash functions is really simple to check message integrity \cite{tsudik1992message}. An hash function is any function that can be used to map data of arbitrary size to data of fixed size. A cryptographic hash function allows one to easily verify that some input data maps to a given hash value, but if the input data is unknown, it is extremely difficult to reconstruct it by knowing the stored hash value. These property are very useful for the goal. Every time a content is uploaded, its hash is calculated by the Server and stored in the \textit{Hashes Blockchain}, where the partecipants are both Servers and Clients. After the client receives the requested content it can easily check its integrity calculating its hash and comparing it with the one stored in the blockchain. If the hashes are equals the content is right, otherwise something wrong happend. Since storing the hash of a content requires the consensum of the network, it is always correct, and there is no possibility for a server to change it without noticing the others nodes. 
+	
+\subsection{Typical Usage}
+A typical usecase is shown in Figure \ref{fig:SystemOverview}. First an Admin wants to upload a new content. After the system checks and authorizes him, a new upload request is sent among the \textit{Contents Blockchain}. When the network approves the request, a copy of the content is distributed on each server (according to blockchain technology) and its hash is calculated and stored in the \textit{Hashes Blockchain}. At any time a client can ask for that content. When the content is received the client calculate its hash with the same hash function used by the Server and compares the obtained hash with the calculated one. If they are equals the integrity is verified, otherwise the client can reject the content and ask to another server.
+
+\subsection{Benefits and Drawbacks}
 
 KEY IDEAS: 
 Simplification of current paradigms
 The current model in many industries such as finance or health is rather disorganized, wherein multiple entities maintain their own databases and data sharing can become very difficult due to the disparate nature of the systems. But as a blockchain can serve as a single shared ledger among interested parties, this can result in simplifying this model by reducing the complexity of managing the separate systems maintained by each entity.
 
 
-	In the financial industry, especially in post-trade settlement functions, blockchain can play a vital role by allowing the quicker settlement of trades as it does not require a lengthy process of verification, reconciliation, and clearance because a single version of agreed upon data is already available on a shared ledger between financial organizations.
-	
-\subsection{Server Blockchain}
-\subsection{Client Blockchain}
+In the financial industry, especially in post-trade settlement functions, blockchain can play a vital role by allowing the quicker settlement of trades as it does not require a lengthy process of verification, reconciliation, and clearance because a single version of agreed upon data is already available on a shared ledger between financial organizations.
 
-\subsection{Benefits and Drawbacks}
 
 \section{Implementation}
+introduzione su solidity e caratteristiche del pc, geth rpc testnet con più nodi, easy miners etc
+
+\subsection{Contents Blockchain}
+\subsection{Hashes Blockchain}
 
 \section{Future Works}
 

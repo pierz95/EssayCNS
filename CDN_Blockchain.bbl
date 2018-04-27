@@ -99,4 +99,10 @@ A.~Azaria, A.~Ekblaw, T.~Vieira, and A.~Lippman, ``Medrec: Using blockchain for
 G.~Wood, ``Ethereum: A secure decentralised generalised transaction ledger,''
   \emph{Ethereum Project Yellow Paper}, vol. 151, pp. 1--32, 2014.
 
+\bibitem{tsudik1992message}
+G.~Tsudik, ``Message authentication with one-way hash functions,'' in
+  \emph{INFOCOM'92. Eleventh Annual Joint Conference of the IEEE Computer and
+  Communications Societies, IEEE}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  1992, pp. 2055--2059.
+
 \end{thebibliography}
