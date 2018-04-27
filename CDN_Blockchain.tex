@@ -463,7 +463,8 @@ Smart contracts describe functions, which can be called by nodes participating i
 The functions run in the Ethereum Virtual Machine (EVM)
 which is described as a ”\textit{quasi}-Turing complete” computer able to execute code of any complexity. The \textit{quasi} qualification comes from the
 fact that the computation is intrinsically bounded to \textit{gas}, which limits the total amount of computation
-done.If the gas transferred to the miner for the function execution is less than the required amount, then the transaction is not mined.  
+done.
+If the gas transferred to the miner for the function execution is less than the required amount, then the transaction is not mined.  
 \\The contract can use memory and storage to save data. It can use any amount of memory (paying gas) during executing its code, but when execution stops, the entire content of the memory is wiped. The storage on the other hand is persisted into the blockchain itself. It can be changed, but all the changes will be recorded in the ledger.\\
 In the presented sytem, thanks of its persistence and (im)mutability, storage will be used to store and share contents. 
 
@@ -471,12 +472,31 @@ In the presented sytem, thanks of its persistence and (im)mutability, storage wi
 \subsection{Benefits}
 In this paragraph, the benefits of using blockchain are discussed. Building the content delivery system on the blockchain it will inherit all the benefits.
 \begin{itemize}
-	\item askjda https://www.entrepreneur.com/article/306420
-	contenuto...
+	\item \textbf{Decentralization:} Consensus mechanism is used to agree on the validity of transactions, thus there is no need for a trusted third party;
+	
+	\item \textbf{Transparency and trust:} Blockchains are shared and visible from all the partecipants. This makes the system transparent and as a result trust is established;
+	
+	\item \textbf{Immutability:} Once the data has been written into the blockchain, it is extremely difficult to change it back. In Ethereum if the state is changed all the updates are stored in the ledger. If only few user are allowed to change the state, the state remains immutable as long as they don't change it;
+	
+	\item \textbf{High availability:} As the system is based on several nodes in a peer-to-peer network, and the data is replicated and updated on each node, the network as a whole continues to work even if nodes leave or become unavailable;
+	
+	\item \textbf{Highly secure:} All transactions on a blockchain are cryptographically secured and provide integrity.	
+
+
 \end{itemize} 
 
 \section{System Design}
 \subsection{Overview}
+
+KEY IDEAS: 
+
+Simplification of current paradigms
+
+The current model in many industries such as finance or health is rather disorganized, wherein multiple entities maintain their own databases and data sharing can become very difficult due to the disparate nature of the systems. But as a blockchain can serve as a single shared ledger among interested parties, this can result in simplifying this model by reducing the complexity of managing the separate systems maintained by each entity.
+
+
+	In the financial industry, especially in post-trade settlement functions, blockchain can play a vital role by allowing the quicker settlement of trades as it does not require a lengthy process of verification, reconciliation, and clearance because a single version of agreed upon data is already available on a shared ledger between financial organizations.
+	
 \subsection{Server Blockchain}
 \subsection{Client Blockchain}
 
