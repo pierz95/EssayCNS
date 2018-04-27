@@ -407,14 +407,14 @@ Moreover, a prototype of the sistem has been developed on Ethereum private netwo
 
 \section{Introduction}
 % no \IEEEPARstart
-Contents distribution is one of the most important aspects of the Internet. To improve the distribution the Content Distribution Networks (CDNs) are born. CDNs provide high availability and high performance because many replicas (Edge Servers) of the Origin Server are spatially distributed to faster fulfill a request. Many services like CoralCDN\cite{freedman2004democratizing} CoDeeN\cite{wang2002effectiveness} provide the possibility to create a CDN starting from the Origin Server, replicating contents and distributing them to end users from the best Edge Server, likely the geographically nearest. A typical scenario can be seen in Figure 1, the Origin Server has more replicas to distribute contents.
+Contents distribution is one of the most important aspects of the Internet. To improve the distribution the Content Distribution Networks (CDNs) are born. CDNs provide high availability and high performance because many replicas (Edge Servers) of the Origin Server are spatially distributed to faster fulfill a request. Many services like CoralCDN\cite{freedman2004democratizing} CoDeeN\cite{wang2002effectiveness} provide the possibility to create a CDN starting from the Origin Server, replicating contents and distributing them to end users from the best Edge Server, likely the geographically nearest. A typical scenario can be seen in Figure \ref{fig:CDN}, the Origin Server has more replicas to distribute contents.
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=2.2in]{images/cdn.png}
 
 \caption{Typical CDN scenario where Origin Server has many Edge Servers to fulfill the clients requests.}
-\label{fig_sim}
+\label{fig:CDN}
 \end{figure} 
 
 In this scenario, two new trust issues are involved. First of all, an attacker could modify the contents from the Origin Server to the Edge Server, thus if the indirectly attacked Edge Server serves that modified content it will be labeled as a misbehaving replica. Secondly, if an Edge Server is not directly managed by the owner of the Origin Server, it can serve different content like stale content or outright modified content, adding ads for example.
@@ -432,13 +432,13 @@ In this work blockchain technology is used. The structure of blockchain ensure t
 
 
 \section{Blockchain Technology}
-After the rise of Bitcoin \cite{nakamoto2008bitcoin}, its underlying structure, the blockchain technology, has been applied to a variety of usecases ranging from authentication \cite{sundararajanonline} (using Ethereum and Smart Contracts) to medical reports\cite{azaria2016medrec}. Blockchain is based on append-only ledger, a growing list of records (called blocks) which are linked and secured using cryptography. The ledger can be viewed by all participating nodes and the updates are permitted only after the consensum of the network. Each block typically contains a cryptographic hash of the previous block, a timestamp and transaction data. Thanks to its structure and the proof-of-work required to create a new block, a blockchain is inherently resistant to modification of the data. A simple example of blockchain is shown in Figure 2.\\
+After the rise of Bitcoin \cite{nakamoto2008bitcoin}, its underlying structure, the blockchain technology, has been applied to a variety of usecases ranging from authentication \cite{sundararajanonline} (using Ethereum and Smart Contracts) to medical reports\cite{azaria2016medrec}. Blockchain is based on append-only ledger, a growing list of records (called blocks) which are linked and secured using cryptography. The ledger can be viewed by all participating nodes and the updates are permitted only after the consensum of the network. Each block typically contains a cryptographic hash of the previous block, a timestamp and transaction data. Thanks to its structure and the proof-of-work required to create a new block, a blockchain is inherently resistant to modification of the data. A simple example of blockchain is shown in Figure \ref{fig:blockchain}.\\
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=3.8in]{images/blockchain.jpg}
 	
 	\caption{Example of blockchain. Transactions are stored in the blocks of the Ledger. Blocks are linked by hashes.}
-	\label{fig_sim}
+	\label{fig:blockchain}
 \end{figure} 
 
 The presented system relies on Ethereum, an open-source, public, blockchain-based distributed computing platform, which allows to execute smart contracts, immutable programs always visible from the community.
@@ -480,18 +480,28 @@ In this paragraph, the benefits of using blockchain are discussed. Building the 
 	
 	\item \textbf{High availability:} As the system is based on several nodes in a peer-to-peer network, and the data is replicated and updated on each node, the network as a whole continues to work even if nodes leave or become unavailable;
 	
-	\item \textbf{Highly secure:} All transactions on a blockchain are cryptographically secured and provide integrity.	
-
-
+	\item \textbf{Highly secure:} All transactions on a blockchain are cryptographically secured and provide integrity.
+	\vspace{10pt}
 \end{itemize} 
 
 \section{System Design}
+In this section is presented the developed system to distribute and to check integrity of the contents. Firstly an high-level overview is shown. Secondly more details about the architecture are provided. Lastly benefits and drowbacks of the system are discussed.
 \subsection{Overview}
+Figure \ref{fig:SystemOverview} shows high-level view of how the presented system distributes the contents on the servers and permits to client to check integrity.
+
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=3.8in]{images/SystemOverview.png}
+	
+	\caption{Overview of the content delivery and check system.}
+	\label{fig:SystemOverview}
+\end{figure} 
+
+
 
 KEY IDEAS: 
-
 Simplification of current paradigms
-
 The current model in many industries such as finance or health is rather disorganized, wherein multiple entities maintain their own databases and data sharing can become very difficult due to the disparate nature of the systems. But as a blockchain can serve as a single shared ledger among interested parties, this can result in simplifying this model by reducing the complexity of managing the separate systems maintained by each entity.
 
 

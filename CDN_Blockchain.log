@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.23)  27 APR 2018 11:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.23)  27 APR 2018 14:05
 entering extended mode
 **./CDN_Blockchain.tex
 (CDN_Blockchain.tex
@@ -153,11 +153,7 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen126
 \Gin@req@width=\dimen127
-) (CDN_Blockchain.aux
-
-LaTeX Warning: Label `fig_sim' multiply defined.
-
-)
+) (CDN_Blockchain.aux)
 \openout1 = `CDN_Blockchain.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 329.
@@ -305,10 +301,22 @@ Missing character: There is no ù in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
+[2 <./images/blockchain.jpg>]
+<images/SystemOverview.png, id=15, 749.04843pt x 530.73282pt>
+File: images/SystemOverview.png Graphic file (type png)
+<use images/SystemOverview.png>
+Package pdftex.def Info: images/SystemOverview.png  used on input line 495.
+(pdftex.def)             Requested size: 274.6262pt x 194.58644pt.
 
-Underfull \vbox (badness 1077) has occurred while \output is active []
+Overfull \hbox (30.71495pt too wide) in paragraph at lines 495--496
+ [][] 
+ []
 
- [2 <./images/blockchain.jpg>] (CDN_Blockchain.bbl)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+(CDN_Blockchain.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -320,29 +328,28 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3] (CDN_Blockchain.aux)
+[3 <./images/SystemOverview.png>] [4
 
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+] (CDN_Blockchain.aux) ) 
 Here is how much of TeX's memory you used:
- 2445 strings out of 493305
- 41553 string characters out of 3127625
- 105629 words of memory out of 3000000
- 5986 multiletter control sequences out of 15000+200000
+ 2452 strings out of 493305
+ 41726 string characters out of 3127625
+ 105606 words of memory out of 3000000
+ 5992 multiletter control sequences out of 15000+200000
  38479 words of font info for 68 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,7n,25p,891b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/Pier Paolo/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8
-r.enc}<C:/Users/Pier Paolo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmsy7.pfb><C:/Users/Pier Paolo/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/urw/times/utmb8a.pfb><C:/Users/Pier Paolo/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Pier Paolo/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Pier Paolo/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on CDN_Blockchain.pdf (3 pages, 248075 bytes).
+ 41i,7n,25p,910b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/Pier Paolo/AppData/Local/Programs/MiKTeX 2.9/
+fonts/enc/dvips/base/8r.enc}<C:/Users/Pier Paolo/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Pier Paolo/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Pier Paolo/AppD
+ata/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Pier 
+Paolo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Us
+ers/Pier Paolo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.
+pfb>
+Output written on CDN_Blockchain.pdf (4 pages, 376755 bytes).
 PDF statistics:
- 35 PDF objects out of 1000 (max. 8388607)
+ 39 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
