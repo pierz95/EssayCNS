@@ -384,8 +384,8 @@
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-A Content Distribution Network (CDN) is a new kind of network with the goal to distribute services and contents spatially relative to end-users to provide high availability and high performance. Several replicas of the Origin Server are used to reach this goal, but trust issues are now involved both between servers and among client and server. In this work is presented a new method to provide secure static content delivery using blockchain, a growing technology with the capability to ensure reliability and trust without a central authority.\\
-Moreover, a prototype of the sistem has been developed on Ethereum private network, in order to test the feasibility. The test shows the goodness of the system, and the possibility to create a new content distribution model on the Internet.  
+A Content Distribution Network (CDN) is a new kind of network with the goal to distribute services and contents spatially relative to end-users to provide high availability and high performance. In order to reach this goal, several replicas of the Origin Server are used, but trust issues are now present both between Servers and among Clients and Servers. In this work a new method to provide secure static content delivery is presented which makes use of a Blockchain, a growing technology with the capability to ensure reliability and trust without a central authority.\\
+Moreover, a prototype of the system has been developed on Ethereum private network, in order to test its feasibility. The test shows the goodness of the system, and the ability to create a new content distribution model over the Internet.  
 \end{abstract}
 
 % no keywords
@@ -407,7 +407,7 @@ Moreover, a prototype of the sistem has been developed on Ethereum private netwo
 
 \section{Introduction}
 % no \IEEEPARstart
-Contents distribution is one of the most important aspects of the Internet. To improve the distribution the Content Distribution Networks (CDNs) are born. CDNs provide high availability and high performance because many replicas (Edge Servers) of the Origin Server are spatially distributed to faster fulfill a request. Many services like CoralCDN\cite{freedman2004democratizing} CoDeeN\cite{wang2002effectiveness} provide the possibility to create a CDN starting from the Origin Server, replicating contents and distributing them to end users from the best Edge Server, likely the geographically nearest. A typical scenario can be seen in Figure \ref{fig:CDN}, the Origin Server has more replicas to distribute contents.
+Content distribution is one of the most important aspects of the Internet. To improve the distribution the Content Distribution Networks (CDNs) are born. CDNs provide high availability and high performance because many replicas (Edge Servers) of the Origin Server are spatially distributed to faster fulfill a request. Many services like CoralCDN\cite{freedman2004democratizing} and CoDeeN\cite{wang2002effectiveness} provide the ability to create a CDN starting from an Origin Server, replicating content and distributing it to end users from the best Edge Server, usually the geographically nearest. A typical scenario can be seen in Figure \ref{fig:CDN}, where the Origin Server has more replicas to distribute content.
 
 \begin{figure}[!t]
 \centering
@@ -417,37 +417,37 @@ Contents distribution is one of the most important aspects of the Internet. To i
 \label{fig:CDN}
 \end{figure} 
 
-In this scenario, two new trust issues are involved. First of all, an attacker could modify the contents from the Origin Server to the Edge Server, thus if the indirectly attacked Edge Server serves that modified content it will be labeled as a misbehaving replica. Secondly, if an Edge Server is not directly managed by the owner of the Origin Server, it can serve different content like stale content or outright modified content, adding ads for example.
-Furthermore in this architecture the Origin Server is a single point of failure. If the Origin server is compromised all the Servers will misbehave.\\
-The main contribute of this work is two-fold.\\First, it is suggested a new architecture to overcome the trust issue between servers, mainteining the CDN properties. Second, the proposed system provides a secure method to deliver static contents, ensuring the integrity with small effort on Clients and Network. 
+In this scenario, two new trust issues are introduced. First of all, an attacker could modify the content from the Origin Server to the Edge Server. If the indirectly attacked Edge Server serves that modified content it will be labeled as a misbehaving replica. Secondly, if an Edge Server is not directly managed by the owner of the Origin Server, it can serve different content, such as stale content or outright modified content, adding ads for example.
+Furthermore in this architecture the Origin Server is a single point of failure. If the Origin server is compromised all the Servers misbehave.\\
+The main contribute of this work is two-fold.\\First, a new architecture to overcome the trust issue between servers is suggested, maintaining the CDN properties. Second, it is shown how the system provides a secure method to deliver static content, ensuring the integrity with small effort on Clients and Network. 
 
 \section{Related Works}
-Checking the integrity of data retrieved from untrusted servers is a crucial problem nowadays. The typical approach for preventing contents tampering between clients and servers is to encrypt the end-to-end connection, for example, using the SSL protocol.
-This negates the functionality of the CDN, because the connection always requires the Origin Server, and the network is no more distributed. For static content, Merkle tree authentication \cite{bayardo2005merkle} is a possible solution, where the server signs the content which is verified by the client. Also digital rights management schemes allows clients to verify data from untrusted server \cite{adelsbach2005towards}. For dynamic content, \cite{chi2002xml}\cite{orman2001data} propose the use of XML-based rules for managing the content, but it has to be limited to be easily verified by
-a client.\\
-In peer-to-peer CDNs the problem is even more significant. LOCKSS\cite{maniatis2003preserving} uses voting system for content integrity. 
-Repeate the execution to detect misbehavior has been used in Rx\cite{qin2005rx} and in Vigilante \cite{costa2005vigilante} to discover bugs and worms respectively. These approachs require significant overhead on the client. In Pioneer\cite{seshadri2005pioneer} the verify effort is on the dispatcher, a trusted platform, but since the proof of correctness is extremely time sensitive it is not suitable for large scale systems.
-Finally Repeate and Compare system \cite{michalakis2007ensuring} is for both static and dynamic contents, it requires the repetition of the content to another replica and compares the results to detect misbehaving replicas. However, the process has significant overhead, and the verify requests may overwhelm the network, thus only a fraction of the contents are verified.\\
-In this work blockchain technology is used. The structure of blockchain ensure trust between untrusted nodes without central authority. A system of contents distribution built over blockchain inherits all its benefits, making simple to share contents and verify them between clients and servers. 
+Checking the integrity of data retrieved from untrusted servers is a crucial problem. The typical approach for preventing content tampering between clients and servers is to encrypt the end-to-end connection, for example using the SSL protocol.
+This negates the functionality of the CDN, because it is always required a connection to the Origin Server, thus the network is no more distributed. For static content, Merkle tree authentication \cite{bayardo2005merkle} is a possible solution, where the Server signs the content which is verified by the client. Another possible solution are digital rights management schemes, which allow clients to verify data from an untrusted Server \cite{adelsbach2005towards}. Both these solutions are useless if the Server is compromised. 
+For dynamic content, \cite{chi2002xml}\cite{orman2001data} propose the use of XML-based rules for managing the content, but it has to be limited to be easily verified by a client.\\
+In peer-to-peer CDNs these problems are even more significant, because Clients can serve content too. LOCKSS\cite{maniatis2003preserving} uses a voting system for content integrity. 
+Repeating the execution to detect misbehavior has been used in Rx\cite{qin2005rx} and in Vigilante \cite{costa2005vigilante} as a method to discover respectively bugs and worms. These approaches imply significant overhead on the Client side. In Pioneer\cite{seshadri2005pioneer} the verify effort is on the dispatcher, a trusted platform, but since the proof of correctness is extremely time sensitive it is not suitable for large scale systems.
+Finally the Repeate and Compare system \cite{michalakis2007ensuring}, which is for both static and dynamic content, requires the repetition of the content to another replica and compares the results to detect misbehaving replicas. However, the process has significant overhead, and the verification requests may stress the network, thus only a fraction of the content is verified.\\
+In this work blockchain technology is used. The structure of a blockchain ensures trust between untrusted nodes without a central authority \cite{nakamoto2008bitcoin}. A system of content distribution built on top of a blockchain inherits all its benefits, making sharing and verifying content between Clients and Servers simple. 
 
 
 \section{Blockchain Technology}
-After the rise of Bitcoin \cite{nakamoto2008bitcoin}, its underlying structure, the blockchain technology, has been applied to a variety of usecases ranging from authentication \cite{sundararajanonline} (using Ethereum and Smart Contracts) to medical reports\cite{azaria2016medrec}. Blockchain is based on append-only ledger, a growing list of records (called blocks) which are linked and secured using cryptography. The ledger can be viewed by all participating nodes and the updates are permitted only after the consensum of the network. Each block typically contains a cryptographic hash of the previous block, a timestamp and transaction data. Thanks to its structure and the proof-of-work required to create a new block, a blockchain is inherently resistant to modification of the data. A simple example of blockchain is shown in Figure \ref{fig:blockchain}.\\
+After the rise of Bitcoin \cite{nakamoto2008bitcoin}, its underlying structure, the blockchain technology, has been applied to a variety of usecases ranging from authentication \cite{sundararajanonline} (using Ethereum and Smart Contracts) to medical reports\cite{azaria2016medrec}. Blockchain is based on an append-only ledger, a growing list of records (called blocks) which are linked and secured using cryptography. The ledger can be viewed by all participating nodes and the updates are permitted only after the consensum of the network. Each block typically contains a cryptographic hash of the previous block, a timestamp and transaction data. Thanks to its structure and the proof-of-work required to create a new block, a blockchain is inherently resistant to modification of the data. A simple example of blockchain is shown in Figure \ref{fig:blockchain}.\\
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=3.8in]{images/blockchain.jpg}
 	
-	\caption{Example of blockchain. Transactions are stored in the blocks of the Ledger. Blocks are linked by hashes.}
+	\caption{Example of blockchain. Transactions are stored onto the blocks of the Ledger. Blocks are linked by hashes.}
 	\label{fig:blockchain}
 \end{figure} 
 
-The presented system relies on Ethereum, an open-source, public, blockchain-based distributed computing platform, which allows to execute smart contracts, immutable programs always visible from the community.
+The presented system relies on Ethereum, an open-source, public, blockchain-based distributed computing platform, which allows the execution of Smart Contracts, immutable programs always visible from the community.
 
 
 \subsection{Ethereum}
-Ethereum \cite{wood2014ethereum} is described as ”a transactional singleton machine with shared-state”. 
-The distributed ledger can be view as a distributed virtual machine which records transactions and state changes.
-The blockchain is kept alive by the miners, nodes which have three main tasks:
+Ethereum \cite{wood2014ethereum} is described as "a transactional singleton machine with shared-state". 
+The distributed ledger can be viewed as a distributed virtual machine which records transactions and state changes.
+The blockchain is kept alive by the miners nodes which have three main tasks:
 \begin{itemize}
 	\item Verifing the transactions being sent, through the consensum algorithm which is similar to other blockchains, removing the need of central authority;
 	\item Checking if the sender has sufficient gas, the Ethereum's native cryptocurrency, to transfer to the receiver;
@@ -461,34 +461,33 @@ In regards to the third point, we see the most important feature of Ethereum: en
 
 Smart contracts describe functions, which can be called by nodes participating in the blockchain, and states which can be changed by the nodes. 
 The functions run in the Ethereum Virtual Machine (EVM)
-which is described as a ”\textit{quasi}-Turing complete” computer able to execute code of any complexity. The \textit{quasi} qualification comes from the
-fact that the computation is intrinsically bounded to \textit{gas}, which limits the total amount of computation
-done.
-If the gas transferred to the miner for the function execution is less than the required amount, then the transaction is not mined.  
-\\The contract can use memory and storage to save data. It can use any amount of memory (paying gas) during executing its code, but when execution stops, the entire content of the memory is wiped. The storage on the other hand is persisted into the blockchain itself. It can be changed, but all the changes will be recorded in the ledger.\\
-In the presented sytem, thanks of its persistence and (im)mutability, storage will be used to store and share contents. 
+which is described as a "\textit{quasi}-Turing complete" computer able to execute code of any complexity. The \textit{quasi} qualification comes from the
+fact that the computation is intrinsically bounded to \textit{gas}, which limits the total amount of computation done.
+If the gas transferred to the miner for the function execution is less than the required amount, then the transaction is not carried out.  
+\\The contract can use memory and storage to save data. It can use any amount of memory (paying gas) during the execution of its code, but when execution ends, the entire content of the memory is wiped. The storage on the other hand is persisted into the blockchain itself. It can be changed, but all the changes will be recorded onto the ledger.\\
+In the presented sytem, thanks to its persistence and (im)mutability, storage will be used to store and share content. 
 
 
 \subsection{Benefits}
-In this paragraph, the benefits of using blockchain are discussed. Building the content delivery system on the blockchain it will inherit all the benefits.
+In this paragraph, benefits of using blockchains are discussed. Since the presented content delivery system is built on top of a blockchain, it will inherit all its benefits.
 \begin{itemize}
-	\item \textbf{Decentralization:} Consensus mechanism is used to agree on the validity of transactions, thus there is no need for a trusted third party;
+	\item \textbf{Decentralization:} a consensus mechanism is used to agree on the validity of transactions, thus there is no need for a trusted third party;
 	
-	\item \textbf{Transparency and trust:} Blockchains are shared and visible from all the partecipants. This makes the system transparent and as a result trust is established;
+	\item \textbf{Transparency and trust:} blockchains are shared and visible to all the partecipants. This makes the system transparent and as a result trust is established;
 	
-	\item \textbf{Immutability:} Once the data has been written into the blockchain, it is extremely difficult to change it back. In Ethereum if the state is changed all the updates are stored in the ledger. If only few user are allowed to change the state, the state remains immutable as long as they don't change it;
+	\item \textbf{Immutability:} once the data has been written into the blockchain, it is extremely difficult to change it back. In Ethereum if the state is changed all the updates are stored in the ledger. If only a few users are allowed to change the state, the state will remain immutable as long as they don't change it;
 	
-	\item \textbf{High availability:} As the system is based on several nodes in a peer-to-peer network, and the data is replicated and updated on each node, the network as a whole continues to work even if nodes leave or become unavailable;
+	\item \textbf{High availability:} since the system is based on several nodes in a peer-to-peer network, and the data is replicated and updated on each node, the network as a whole continues to work even if nodes leave or become unavailable;
 	
-	\item \textbf{Highly secure:} All transactions on a blockchain are cryptographically secured and provide integrity.
+	\item \textbf{Highly secure:} all the transactions on a blockchain are cryptographically secured and provide integrity.
 	\vspace{10pt}
 \end{itemize} 
 
 \section{System Design}
-In this section is presented the developed system to distribute and check integrity of the contents. Firstly an high-level overview is shown. Secondly more details about the architecture are provided. Lastly benefits and drowbacks of the system are discussed.
+In this section the developed system to distribute and check integrity of the content is presented. Firstly an high-level overview is shown. Secondly more details about the architecture are provided. Lastly benefits and drowbacks of the system are discussed.
 
 \subsection{Overview}
-Figure \ref{fig:SystemOverview} shows high-level view of how the presented system distributes the contents on the Servers and permits to Client to check integrity.
+Figure \ref{fig:SystemOverview} shows an high-level view of how the presented system distributes the content on the Servers and permits to Client to check integrity.
 
 
 \begin{figure}[!h]
@@ -499,37 +498,37 @@ Figure \ref{fig:SystemOverview} shows high-level view of how the presented syste
 	\label{fig:SystemOverview}
 \end{figure} 
 
-The system wants to resolve trust issues between Origin and Edge Servers, since the last can receive altered contents, and between Servers and Clients, as Server can send different content from the requested one. The key idea is to use two different blockchains: the \textit{Contents Blockchain} and the \textit{Hashes Blockchain}.
-\subsubsection{Contents Blockchain}
-The proposal is to build the CDN on a blockchain, the \textit{Contents Blockchain}. This means each Edge Server is a node of the blockchain wherein contents will be stored. The Origin Server is no more required, since it is possible to add a content from every node (Edge Server) as long as it is authorizated, and the content will be automatically distributed on each Server thanks to blockchain technology. To authorize the upload of the contents an user system is used. Since the blockchain is always visible from every partecipant, and every partecipant has a public address, which is a public and private key pair, it is enough to store in the blockchain the addresses of who can upload the contents, and after checking who is requesting the upload, the transaction can be executed or not. Two kind of user are permitted: Admin and Superadmin. Admins can upload/remove/edit the contents while Superadmin can also create other Admins. 
+The system wants to resolve trust issues between Origin and Edge Servers, since the latter can receive altered content, and between Servers and Clients, as Servers can send content which differs from the requested one. The key idea is to use two different blockchains: the \textit{Content Blockchain} and the \textit{Hashes Blockchain}.
+\subsubsection{Content Blockchain}
+The proposal is to build the CDN on a blockchain, the \textit{Content Blockchain}. This means that each Edge Server is a node of the blockchain wherein content will be stored. The Origin Server is no more required, since it is possible to add content from every node (Edge Server) as long as it is authorized, and the content will automatically be distributed on each Server thanks to the blockchain technology. To authorize the upload of content an user system is used. Since the blockchain is always visible to every participant, and every participant has a public address, which consists in a public and private key pair, storing the addresses of who can upload the content in the blockchain is enough, and after having checked the identity of who is requesting the upload, the transaction can be executed. Two kind of users are permitted: Admin and Superadmin. Admins can upload/remove/edit the content while Superadmins can also create other Admins. 
 
 \subsubsection{Hashes Blockchain}
-The \textit{Hashes Blockchain} is the key to check the integrity of received contents. Thanks to hash functions is really simple to check message integrity \cite{tsudik1992message}. An hash function is any function that can be used to map data of arbitrary size to data of fixed size. A cryptographic hash function allows one to easily verify that some input data maps to a given hash value, but if the input data is unknown, it is extremely difficult to reconstruct it by knowing the stored hash value. These property are very useful for the goal. Every time a content is uploaded, its hash is calculated by the Server and stored in the \textit{Hashes Blockchain}, where the partecipants are both Servers and Clients. After the client receives the requested content it can easily check its integrity calculating its hash and comparing it with the one stored in the blockchain. If the hashes are equals the content is right, otherwise something wrong happend. Since storing the hash of a content requires the consensum of the network, it is always correct, and there is no possibility for a server to change it without noticing the others nodes. 
+The \textit{Hashes Blockchain} is the key in checking the integrity of received content. Thanks to hash functions checking message integrity is really simple \cite{tsudik1992message}. An hash function is any function that can be used to map data of arbitrary size to data of fixed size. A cryptographic hash function allows one to easily verify that some input data maps to a given hash value, but if the input data is unknown, it is extremely difficult to reconstruct it by knowing the stored hash value. These property are very useful for the goal. Every time a content is uploaded, its hash is calculated by the Server and stored in the \textit{Hashes Blockchain}, where the partecipants are both Servers and Clients. After the client receives the requested content it can easily check its integrity calculating its hash and comparing it with the one stored in the blockchain. If the hashes are equal the content is right, otherwise something wrong happend. Since storing the hash of a content requires the consensum of the network, the hash is always correct, and there is no possibility for a server to change it without noticing the others nodes. 
 	
 \subsection{Typical Usage}
-A typical usecase is shown in Figure \ref{fig:SystemOverview}. First an Admin wants to upload a new content. After the system checks and authorizes him, a new upload request is sent among the \textit{Contents Blockchain}. When the network approves the request, a copy of the content is distributed on each server (according to blockchain technology) and its hash is calculated and stored in the \textit{Hashes Blockchain}. At any time a client can ask for that content. When the content is received the client calculate its hash with the same hash function used by the Server and compares the obtained hash with the calculated one. If they are equals the integrity is verified, otherwise the client can reject the content and ask to another server.
+A typical use case is shown in Figure \ref{fig:SystemOverview}. First an Admin wants to upload a new content. After the system checks and authorizes him, a new upload request is sent among the \textit{Content Blockchain}. When the network approves the request, a copy of the content is distributed on each server (according to blockchain technology) and its hash is calculated and stored in the \textit{Hashes Blockchain}. A client can ask for that content at any time. When the content is received the client calculate its hash with the same hash function used by the Server and compares the obtained hash with the calculated one. If they are equal the integrity is verified, otherwise the client can reject the content and ask to another server.
 
 \subsection{Benefits and Drawbacks}
 
 
-In many distributed systems multiple entities maintain their own databases and data sharing can become very difficult due to the disparate nature of the systems. Since a blockchain can serve as a single shared ledger among interested parties, this can reduce the complexity of managing the whole system, removing the possibile processes of verification, reconciliation, and clearance. The contents on all the Servers are always correct and updated, the problem of a replica receiving wrong contents from the main server is avoided.\\
-Many of cited systems like Pioneer \cite{seshadri2005pioneer} and Repeat and Compare \cite{michalakis2007ensuring} require sending multiple request to the server (to get the content and to check it) with the possibility to overcrowd the network, whereas others system requires significant overhead on the client. In the presented system the needed traffic to check integrity is correlated to the mainteining of the blockchain itself, which is not really relevant, and the effort on the client is minimum as shown in Section \ref{Implementation}. When client wants to verify the obtained data it just has to calculate an hash, and check the result. Since the checking process is unexpensive for clients and not stressful for the network, each content can be verified, unlike the other systems where the detection is probabilistic. Furthermore, even the misbehaving Servers detection is simpler thanks to blockchain technology. 
+In many distributed systems multiple entities maintain their own databases and data sharing can become very difficult due to the disparate nature of the systems. Since a blockchain can serve as a single shared ledger among interested parties, this can reduce the complexity of managing the whole system, removing the possibile processes of verification, reconciliation, and clearance. The content on all the Servers is always correct and updated, the problem of a replica receiving wrong content from the main server is avoided.\\
+Many of cited systems like Pioneer \cite{seshadri2005pioneer} and Repeat and Compare \cite{michalakis2007ensuring} require sending multiple request to the server (to get the content and to check it) with the possibility to overcrowd the network, whereas others system causes significant overhead on the client. In the presented system the traffic needed to check integrity is correlated to the maintaining of the blockchain itself, which should not be really relevant, and the effort on the Client is minimum as shown in Section \ref{Implementation}. When Client wants to verify the obtained data it just has to calculate an hash, and check the result. Since the checking process is unexpensive for clients and not stressful for the network, each object of the content can be verified, unlike the other systems where the detection is probabilistic. Furthermore, even the misbehaving Servers detection is simpler thanks to the blockchain technology. 
 \\
-Another point of strenght is the removal of the Origin Server, an admin can simply upload a content from his home and it will be distributed among the Servers (peers). Now there is not a single point of failure, since if a Server is compromised the network will see it.  The attacker has to steal the private key of an admin to take control of a Server, which is difficult, and it is not a new problem.
-\\In these system we have some drawbacks aswell. First of all, all the Servers must have all the contents that the system can serve, which can be expensive in some scenarios. However, if the \textit{Contents Blockchain} would only contains more requested contents or the URLs of the resources, it is possible to reduces the costs. Secondly, the clients must have a proxy or something similar to automatically check the integrity, but this is not a big deal since it can be done with a simple browser add-on for example. Lastly, keeping updated the blockchain has some costs for the network, but precise tests should be executed to evaluate if this is a real problem, and in a real enviroment the uploading process could be slow due to the mining operation.
+Another point of strenght is the removal of the Origin Server; an Admin can simply upload a content from his home and it will be distributed among the Servers (peers). Now there is not a single point of failure, since if a Server is compromised the network will know it.  The attacker has to steal the private key of an Admin to take control of a Server, which is difficult, and it is a problem present in any other solution.
+\\In this system we have some drawbacks aswell. First of all, all the Servers must have all the content that the system can serve, which can be expensive in some scenarios. However, if the \textit{Content Blockchain} only contained the more requested content or the URIs of the resources, it would be possible to reduces the costs. Secondly, the clients must have a proxy or some similar mechanism to automatically check the integrity, but this is not a big deal since it can be done with a simple browser add-on for example. Lastly, keeping updated the blockchain has some costs for the network, but precise tests should be executed to evaluate if this is a real problem, and in a real enviroment the uploading process could be slow due to the mining operation.
 
 
 
 \section{Implementation}
 \label{Implementation}
-The system relies on Ethereum Blockchain and Smart Contracts. Each Smart Contract can have multiple instance. 
-The contracts are written in Solidity, a high level language designed to encode contracts in Ethereum. The system was tested on a private Ethereum testnet, which is useful for beginners because the use of money (gas) is not involved. To create the network \textit{geth} was used, the the command line interface for running a full ethereum node implemented in Go. The network was composed by few nodes, one Admin and one Superadmin, and a single miner. The difficulty of minining a new block was low, so the testing could be faster.
-Different Smart Contracts are developed for \textit{Contents Blockchain} and \textit{Hashes Blockchain}. The deploy of contracts was made by Remix IDE, which allows to connect to the private testnet via JSON-RPC. 
+The system relies on Ethereum Blockchain and Smart Contracts. Each Smart Contract can have multiple instances. 
+The contracts are written in Solidity, a high level language designed to encode contracts in Ethereum. The system was tested on a private Ethereum testnet, which is useful for beginners because the use of money (gas) is not involved. To create the network \textit{geth} was used, the command line interface for running a full ethereum node implemented in Go. The network was composed by few nodes, one Admin and one Superadmin, and a single miner. The difficulty of mining a new block was low, so that testing could be faster.
+Different Smart Contracts are developed for \textit{Content Blockchain} and \textit{Hashes Blockchain}. The deploy of contracts was made by Remix IDE, which allows to connect to the private testnet via JSON-RPC. 
 
-\subsection{Contents Blockchain}
-The \textit{Contents Blockchain} is where the contents are stored in the Servers. Three Smart Contracts have been developed for the scope:
+\subsection{Content Blockchain}
+The \textit{Content Blockchain} is where the content is stored in the Servers. Three Smart Contracts have been written for the scope:
 \begin{itemize}
-	\item \textbf{StoredContent}: each instance of this contract represents a content. Every contents has the following attributes (stored in the Storage): 
+	\item \textbf{StoredContent}: each instance of this contract represents a content. Each object of the content has the following attributes (stored in the Storage): 
 	\begin{itemize}
 		\item the owner, that is the uploader Admin;
 		\item the name;
@@ -538,9 +537,9 @@ The \textit{Contents Blockchain} is where the contents are stored in the Servers
 		\item the data;
 		\item the hash.
 	\end{itemize}
-	Only Admin and Superadmin are allowed to create and manage contents. The contract permits to edit the attributes except the owner, the timestamp and the hash. The last is calculated with \textit{keccak256}, which is an alias of \textit{sha3} supported by Ethereum;
+	Only Admin and Superadmin are allowed to create and manage objects. The contract permits to edit the attributes except the owner, the timestamp and the hash. The last is calculated with \textit{keccak256}, which is an alias of \textit{sha3} supported by Ethereum;
 	\item \textbf{AdminAddresses}: only one instance of this contract is required. It has a map containing the addresses of Admins and Superadmins. Methods to check if an address is related to an Admin and which privileges he has are provided. It is also possible for Superadmins to add or remove Admins using this contract;
-	\item \textbf{MapContents}: only one instance of this contract is required. It has the map of all the contents, wherein the key is the name of the content. Mapped to the key there are the address of the content, its hash, and the names of the others contents related to it (further information are provided in Section \ref{clienthashes}). Calling this contract an admin can add/delete/update any content.
+	\item \textbf{ContentMap}: only one instance of this contract is required. It has the map of all the objects, wherein the key is the name of the object. Mapped to the key there are the address of the object, its hash, and the names of the other objects related to it (further information are provided in Section \ref{clienthashes}). Calling this contract an admin can add/delete/update any content.
 	
 \end{itemize}
 
@@ -554,19 +553,19 @@ The \textit{Contents Blockchain} is where the contents are stored in the Servers
 	\caption{Example of Merkel Tree. In the root is stored the combination of the hashes stored in the leafs.}
 	\label{fig:tree}
 \end{figure} 
-Assign to clients the task of verifying contents integrity through hashes would mean that the hash of every content has to be in the \textit{Hashes Blockchain}. Actually, Merkel Tree is a perfect data structure for our goals. As shown in Figure \ref{fig:tree}, a Merkel Tree is a tree in which every leaf node is labelled with the hash of a data block and every non-leaf node is labelled with the cryptographic hash of the labels of its child nodes. It allows efficient and secure verification of more contents at the same time. Instead of storing one hash per content, using a Merkel Tree of four leafs, for example, is possible to store one hash every four contents. The contents per tree can be raised, and it means a lot of space saving. To check if a content is correct, all the names of the contents of the related Merkel Tree are fetched in the right order. Then it is sufficient to calculate the root hashes starting from the calculated hash of the received content with the hashes of the other contents in the tree, and in the end comparing the result with the root hash stored in the blockchain.\\
-Two Smart Contracts have been developed for the scope:
+Assigning to clients the task of verifying content integrity through hashes would mean that the hash of each object of content has to be in the \textit{Hashes Blockchain}. Merkel Tree is a perfect data structure for our goals. As shown in Figure \ref{fig:tree}, a Merkel Tree is a tree in which every leaf node is labelled with the hash of a data block and every non-leaf node is labelled with the cryptographic hash of the labels of its child nodes. It allows efficient and secure verification of more objects of the content simultaneously. Instead of storing one hash per object, using a Merkel Tree of four leafs, for example, is possible to store one hash every four objects. The number of objects per tree can be increased, with a lot of space saving. To check if an object is correct, all the names of the objects of the related Merkel Tree are fetched in ascending order. Then it is sufficient to calculate the root hashes starting from the calculated hash of the received object with the hashes of the other objects in the tree, and lastly comparing the result with the root hash stored in the blockchain.\\
+Two Smart Contracts have been written for the scope:
 \begin{itemize}
-	\item \textbf{ClientMerkelTree}: each instance of this contract has the root hash of a Merkel Tree. The contract provides method to calculate, store and check the root hash of four contents.
-	\item \textbf{ClientMap}: only one instance of this contract is required. It has the map of all the contents, wherein the key is the name of the content. Mapped to the key there are the address of the related Merkel Tree, the hash of the content and the names of the related contents. 
+	\item \textbf{ObjectsMerkelTree}: each instance of this contract has the root hash of a Merkel Tree. The contract provides methods to calculate, store and check the root hash of four objects.
+	\item \textbf{ObjectsMap}: only one instance of this contract is required. It has the map of the objects of the content, wherein the key is the name of the object. Mapped to the key there are the address of the related Merkel Tree, the hash of the object and the names of the related objects. 
 \end{itemize}
 
 \section{Future Works}
 
 The presented system has been developed on Ethereum, but it limits the code execution of Smart Contracts imposing gas payment. Some instruction like loops can be very expensive, thus it may not be the best enviroment for the scope. A new ad-hoc blockchain could be implemented for the content distribution, to better fit the requirments. 
-Another improvment could be substituting the data of the content in the \textit{Contents Blockchain} with an URI or another type of storing to permit Servers to have also other contents, depending on the situation.
-The idea of using a secure URI would lead to create of a global blockchain for contents distribution, where different services and websites can entrust their contents. For example, every service can have its own blockchain, and in the global blockchain could be links to these blockchains.
-In the end, the presented system is only for static content, a better implementation could be thought for sharing dynamic contents too.
+Another improvment could be replacing the data of the content in the \textit{Content Blockchain} with an URI or another type of storage to permit Servers to contain also other objects, depending on the situation.
+The idea of using a secure URI would lead to the creation a global blockchain for content distribution, which different services and websites can entrust with their content. For example, every service can have its own blockchain, and in the global blockchain could be links to these blockchains.
+In the end, the presented system is only for static content, a better implementation could be thought for sharing dynamic content too.
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
@@ -667,26 +666,7 @@ In the end, the presented system is only for static content, a better implementa
 
 \section{Conclusion}
 
-In the presented system trust issues in a Content Distribution Network have a solution. Thanks to the growing blockchain technology and its security characteristics, it is possible to secure distribute contents among Servers, and a client can check if the requested content is right. Many problems of exiting systems like strong efforts on the Network or Clients are resolved, and the prototype build on private Ethereum testnet shows the feasibilty of the system. The use of Merkel Tree permits space saving, and other improvement are possible to make this system alive.
-
-
-
-
-% conference papers do not normally have an appendix
-
-
-
-% use section* for acknowledgment
-\ifCLASSOPTIONcompsoc
-  % The Computer Society usually uses the plural form
-  \section*{Acknowledgments}
-\else
-  % regular IEEE prefers the singular form
-  \section*{Acknowledgment}
-\fi
-
-
-The authors would like to thank...
+In the presented system a solution is found for trust issues in a Content Distribution Network. Thanks to the growing blockchain technology and its security characteristics, it is possible to securely distribute content among Servers, and a Client can check if the requested content is intact. Many problems of exiting systems like strong efforts on the Network or Clients are solved, and the prototype built on the private Ethereum testnet shows the feasibilty of such system. The use of Merkel Tree leads to space saving, and with other smaller improvements the bootstrap of the system should be a real possibility.
 
 
 
