@@ -82,6 +82,12 @@ N.~Michalakis, R.~Soul{\'e}, and R.~Grimm, ``Ensuring content integrity for
   implementation}.\hskip 1em plus 0.5em minus 0.4em\relax USENIX Association,
   2007, pp. 11--11.
 
+\bibitem{kishigami2015blockchain}
+J.~Kishigami, S.~Fujimura, H.~Watanabe, A.~Nakadaira, and A.~Akutsu, ``The
+  blockchain-based digital content distribution system,'' in \emph{Big Data and
+  Cloud Computing (BDCloud), 2015 IEEE Fifth International Conference
+  on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2015, pp. 187--190.
+
 \bibitem{nakamoto2008bitcoin}
 S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system,'' 2008.
 
