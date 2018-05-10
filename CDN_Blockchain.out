@@ -10,8 +10,12 @@
 \BOOKMARK [2][-]{subsection.4.2}{Typical Usage}{section.4}% 10
 \BOOKMARK [2][-]{subsection.4.3}{Benefits and Drawbacks}{section.4}% 11
 \BOOKMARK [1][-]{section.5}{Implementation}{}% 12
-\BOOKMARK [2][-]{subsection.5.1}{Content Blockchain}{section.5}% 13
-\BOOKMARK [2][-]{subsection.5.2}{Hashes Blockchain}{section.5}% 14
-\BOOKMARK [1][-]{section.6}{Future Works}{}% 15
-\BOOKMARK [1][-]{section.7}{Conclusion}{}% 16
-\BOOKMARK [1][-]{section*.1}{References}{}% 17
+\BOOKMARK [2][-]{subsection.5.1}{Administration System}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.2}{Content Managing}{section.5}% 14
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Creation}{subsection.5.2}% 15
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Edit}{subsection.5.2}% 16
+\BOOKMARK [2][-]{subsection.5.3}{Request of an object}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.4}{Integrity checking}{section.5}% 18
+\BOOKMARK [1][-]{section.6}{Future Works}{}% 19
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 20
+\BOOKMARK [1][-]{section*.1}{References}{}% 21

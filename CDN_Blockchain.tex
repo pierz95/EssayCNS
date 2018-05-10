@@ -407,15 +407,15 @@ Moreover, a prototype of the system has been developed on Ethereum private netwo
 
 \section{Introduction}
 % no \IEEEPARstart
-Content distribution is one of the most important aspects of the Internet. To improve the distribution the Content Distribution Networks (CDNs) are born. CDNs provide high availability and high performance because many replicas (Edge Servers) of the Origin Server are spatially distributed to faster fulfill a request. Many services like CoralCDN\cite{freedman2004democratizing} and CoDeeN\cite{wang2002effectiveness} provide the ability to create a CDN starting from an Origin Server, replicating content and distributing it to end users from the best Edge Server, usually the geographically nearest. A typical scenario can be seen in Figure \ref{fig:CDN}, where the Origin Server has more replicas to distribute content.
-
-\begin{figure}[!t]
-\centering
-\includegraphics[width=2.2in]{images/cdn.png}
-
-\label{fig:CDN}
-\caption{Typical CDN scenario where Origin Server has many Edge Servers to fulfill the Clients requests.}
-\end{figure} 
+Content distribution is one of the most important aspects of the Internet. To improve the distribution the Content Distribution Networks (CDNs) are born. CDNs provide high availability and high performance because many replicas (Edge Servers) of the Origin Server are spatially distributed to faster fulfill a request. Many services like CoralCDN\cite{freedman2004democratizing} and CoDeeN\cite{wang2002effectiveness} provide the ability to create a CDN starting from an Origin Server, replicating content and distributing it to end users from the best Edge Server, usually the geographically nearest. %A typical scenario can be seen in Figure \ref{fig:CDN}, where the Origin Server has more replicas to distribute content.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.2in]{images/cdn.png}
+%
+%\label{fig:CDN}
+%\caption{Typical CDN scenario where Origin Server has many Edge Servers to fulfill %the Clients requests.}
+%\end{figure} 
 
 In this scenario, two new trust issues are introduced. First of all, an attacker could modify the content from the Origin Server to the Edge Server. If the indirectly attacked Edge Server serves that modified content, it will be labeled as a misbehaving replica. Secondly, if an Edge Server is not directly managed by the owner of the Origin Server, it can serve different content, such as stale content or outright modified content, adding ads for example.
 Furthermore in this architecture the Origin Server is a single point of failure. If the Origin Server is compromised all the Servers misbehave.\\
@@ -428,8 +428,7 @@ For dynamic content, \cite{chi2002xml}\cite{orman2001data} propose the use of XM
 In peer-to-peer CDNs these problems are even more significant, because Clients can serve content too. LOCKSS\cite{maniatis2003preserving} uses a voting system for content integrity. 
 Repeating the execution to detect misbehavior has been used in Rx\cite{qin2005rx} and in Vigilante \cite{costa2005vigilante} as a method to discover respectively bugs and worms. These approaches imply significant overhead on the Client side. In Pioneer\cite{seshadri2005pioneer} the verify effort is on the dispatcher, a trusted platform, but since the proof of correctness is extremely time sensitive it is not suitable for large scale systems.
 Finally the Repeate and Compare system \cite{michalakis2007ensuring}, which is for both static and dynamic content, requires the repetition of the content to another replica and compares the results to detect misbehaving replicas. However, the process has significant overhead, and the verification requests may stress the network, thus only a fraction of the content is verified.\\
-In this work Blockchain technology is used. In \cite{kishigami2015blockchain} a video sharing system using a Blockchain is proposed, but implementation details are not provided. The structure of a Blockchain ensures trust between untrusted nodes without a central authority \cite{nakamoto2008bitcoin}. A system of content distribution built on top of a Blockchain inherits all its benefits, making sharing and verifying content between Clients and Servers simple. 
-
+In this work Blockchain technology is used. In \cite{kishigami2015blockchain} a video sharing system using a Blockchain is proposed, but implementation details are not provided. The structure of a Blockchain ensures trust between untrusted nodes without a central authority \cite{nakamoto2008bitcoin}. A system of content distribution built on top of a Blockchain inherits all its benefits, making sharing and verifying content simple. 
 
 \section{Blockchain Technology}
 After the rise of Bitcoin \cite{nakamoto2008bitcoin}, its underlying structure, the Blockchain technology, has been applied to a variety of usecases ranging from authentication \cite{sundararajanonline} (using Ethereum and Smart Contracts) to medical reports\cite{azaria2016medrec}. Blockchain is based on an append-only ledger, a growing list of records (called blocks) which are linked and secured using cryptography. The ledger can be viewed by all participating nodes and the updates are permitted only after the consensum of the network. Each block typically contains a cryptographic hash of the previous block, a timestamp and transaction data. %Thanks to its structure and the proof-of-work required to create a new block, a Blockchain is inherently resistant to modification of the data. 
@@ -464,7 +463,7 @@ The functions run in the Ethereum Virtual Machine (EVM),
 a Turing complete computer able to execute code of any complexity.
 %If the gas transferred to the miner for the function execution is less than the required amount, then the transaction is not carried out.  
 The contract can use memory and storage to save data: % It can use any amount of memory (paying gas) during the execution of its code, but when execution ends, the entire content of the memory is wiped. The storage on the other hand is persisted into the Blockchain itself. It can be changed, but all the changes will be recorded onto the ledger.\\
-memory is volatile while storage persist over time. The last can be changed, but all the changes will be recorded onto the ledger.\\
+memory is volatile while storage persists over time. The last can be changed, but all the changes will be recorded onto the ledger.\\
 In the presented sytem, thanks to its persistence and (im)mutability, storage will be used to store and share content. 
 
 
@@ -523,27 +522,50 @@ Another point of strenght is the removal of the Origin Server; an Admin can simp
 \label{Implementation}
 The system relies on Ethereum Blockchain and Smart Contracts. Each Smart Contract can have multiple instances. 
 The contracts are written in Solidity, a high level language designed to encode contracts in Ethereum. The system was tested on a private Ethereum testnet, which is useful for beginners because the use of money (gas) is not involved. To create the network \textit{geth} was used, the command line interface for running a full ethereum node implemented in Go. The network was composed by few nodes, one Admin and one Superadmin, and a single miner. The difficulty of mining a new block was low, so that testing could be faster.
-Different Smart Contracts are developed for \textit{Content Blockchain} and \textit{Hashes Blockchain}. The deploy of contracts was made by Remix IDE, which allows to connect to the private testnet via JSON-RPC. 
+Different Smart Contracts are developed for \textit{Content Blockchain} and \textit{Hashes Blockchain}. The deploy of contracts was made by Remix IDE, which allows to connect to the private testnet via JSON-RPC.
+In the next sections the main functionalities of the system are explained.
 
-\subsection{Content Blockchain}
-The \textit{Content Blockchain} is where the content is stored on the Servers. Three Smart Contracts have been written for the scope:
+\subsection{Administration System}
+Only Admins are allowed to manage the objects of the Content. The Administration system is implemented using one istance of the \texttt{AdminAddresses} Smart Contract. In its storage there is a Map in which all the Admins and Superadmins are present. It maps the address of a user with its privileges (Admin or Superadmin). If an address is not present in the Map then it is not able to manage the Content. The contract thus allows:
 \begin{itemize}
-	\item \textbf{StoredContent}: each instance of this contract represents an object of the content. Each object, in addition to data, has the following attributes (stored in the Storage): 
-	\begin{itemize}
-		\item the owner, that is the uploader Admin;
-		\item the name;
-		\item the description;
-		\item the timestamp of the upload;
-		\item the hash.
-	\end{itemize}
-	Only Admin and Superadmin are allowed to create and manage objects. The contract permits to edit the attributes except the owner, the timestamp and the hash. The last is calculated with \textit{keccak256}, which is an alias of \textit{sha3}. The hash is 32 bytes long;
-	\item \textbf{AdminAddresses}: only one instance of this contract is required. It has a map containing the addresses of Admins and Superadmins. Methods to check if an address is related to an Admin and which privileges he has are provided. It is also possible for Superadmins to add or remove Admins using this contract;
-	\item \textbf{ContentMap}: only one instance of this contract is required. It has the map of all the objects, wherein the key is the name of the object. Mapped to the key there are the address of the object, its hash, and the names of the other objects related to it (further information are provided in Section \hyperref[sec:Clienthashes]{5.2}). Calling this contract an Admin can add/delete/update any object of the content.
-	
+	\item to check if a user is an Admin (if its address is in the Map);
+	\item to get the user privileges (Admin or Superadmin);
+	\item to set Superadmin privileges to a user (only if the requester is a Superadmin);
+	\item to add or delete an Admin (only if the requester is a Superadmin).
+\end{itemize}   
+
+\subsection{Content Managing}
+The \textit{Content Blockchain} is where the Content on the Servers is stored.
+The \texttt{StoredContent} Smart Contract allows to create and edit an object. This means that each object of the Content is an instance of \texttt{StoredContent}. 
+Each object has the following attributes (stored in the Storage): 
+\begin{itemize}
+	\item the owner, that is the uploader Admin;
+	\item the name;
+	\item the description;
+	\item the timestamp of the upload;
+	\item the data;
+	\item the hash of the data.
 \end{itemize}
+\subsubsection{Creation}To add an object the constructor of the contract requires its name, the data and the description. After having checked if the uploader is an Admin (using the \texttt{AdminAddresses} Smart Contract), it calculates the hash of the data using \textit{keccak256} function, which is an alias of \textit{sha3} supported by Ethereum. The hash is 32 bytes long. When the instance of the contract is mined the object is distributed on all nodes of the \textit{Content Blockchain}, according to Blockchain technology. Since all the nodes of the Blockchain has the same ledger, the Content present in the storage is equal in each node. This resolves the trust issue of sharing Content between Origin and Edge Servers.
+\\To find the object in the Blockchain a Map of all objects is used, but a block explorer to find the requested object could be implemented to save space. When the object is created, its addres must be added to the Map. The \texttt{ContentMap}
+is the Smart Contract which contains the Map of the objects. In the storage of its unique instance there is the map of all the objects, wherein the key is the name of the object. Mapped to the key there are the address of the object, its hash, and the names of the other objects related to it. Merkle Tree are used to save space on Clients to check integrity of the objects, thus each object is related to other three objects in our scenario, where the Merkle Tree is composed by four leafs (further information are provided in Section \hyperref[sec:Clienthashes]{5.4}). The contract allows:
+\begin{itemize}
+	\item to insert an object in the Map;
+	\item to check if an object is present in the Map;
+	\item to edit the name of an object. This implies that the \texttt{StoredContent} instance representing that object is called to change its name, and that the name is changed in the related names of its related objects;
+	\item to get the address of the object;
+	\item to associate a new object to a specific name;
+	\item to remove the object from the Map;
+\end{itemize} 
+Note that an object cannot be deleted from the Blockchain, since that technology doesn't permit it, but its entry in the Map can be removed.
+Each function of the contract firstly check if the requester is an Admin using the \texttt{AdminAddresses} Smart Contract.\\
+Finally the information for integrity checking has to be stored in the \textit{Hashes Blockchain}. The Server uses the \texttt{ObjectsMerkleTree} Smart Contract (which is better explained in \hyperref[sec:Clienthashes]{5.4}) to create or update the Merkle Tree in which the hash of the object has to be stored.
+\subsubsection{Edit} The \texttt{StoredContent} Smart Contract permits to edit the attributes of an object except the owner, the timestamp and the hash, since they are always calculated by the Smart Contract at each update. Every change of attributes implies the update of the Map of the \texttt{ContentMap} contract, and the changes are allowed only after having checked if the requester is an Admin, using the \texttt{AdminAddresses} Smart Contract. If the data is changed, the Server uses the \texttt{ObjectsMerkleTree} Smart Contract to create or update the Merkle Tree in which the hash of the object has to be stored.
 
+\subsection{Request of an object}
+Client can request an object of the Content in an ordinary way. The Server will call the \texttt{ContentMap} Smart Contract to get the address of the object, then it uses the \texttt{getData} method of the \texttt{StoredContent} instance located at the fetched address to get the data of the object, and it finally sends the object to the client in an ordinary way. 
 
-\subsection{Hashes Blockchain}
+\subsection{Integrity checking}
 \label{sec:Clienthashes}
 \begin{figure}[!h]
 	\centering
@@ -552,7 +574,7 @@ The \textit{Content Blockchain} is where the content is stored on the Servers. T
 	\caption{Example of Merkle Tree. In the root is stored the combination of the hashes stored in the leafs.}
 	\label{fig:tree}
 \end{figure} 
-Assigning to Clients the task of verifying content integrity through hashes would mean that the hash of each object has to be in the \textit{Hashes Blockchain}. Merkle Tree is a perfect data structure for our goals, instead of using a simple Map where each object has its hash. As shown in Figure \ref{fig:tree}, a Merkle Tree is a tree in which every leaf node is labelled with the hash of a data block and every non-leaf node is labelled with the cryptographic hash of the labels of its child nodes. It allows efficient and secure verification of more objects simultaneously. Instead of storing one hash per object, using a Merkle Tree of four leafs, for example, is possible to store one hash every four objects. The number of objects per tree can be increased, with a lot of space saving. In Table \ref{table_space} the required space on Clients using a Map with all the objects versus a Merkle Trees of four objects is shown. 
+To check the Content integrity the \textit{Hashes Blockchain}, formed by MerkleTrees in order to save space, is used. As shown in Figure \ref{fig:tree}, a Merkle Tree is a tree in which every leaf node is labelled with the hash of a data block and every non-leaf node is labelled with the cryptographic hash of the labels of its child nodes. Instead of storing one hash per object, using a Merkle Tree of four leafs, for example, is possible to store one hash every four objects. The number of objects per tree can be increased, with a lot of space saving. In Table \ref{table_space} the required space on Clients using a Map with all the objects versus a Merkle Trees of four objects is shown. 
 
 \begin{table}[!h]
 	%% increase table row spacing, adjust to taste
@@ -578,17 +600,13 @@ Assigning to Clients the task of verifying content integrity through hashes woul
 	\end{tabular}
 \end{table}
 
-To check if an object is intact, when the Clients requests that object, the Server sends it with also the hashes of the objects which belong to the same Merkle Tree of the requested object. Then it is sufficient to calculate the root hash of the new Tree composed by the calculated hash of the received object and the hashes of the related objects in the right order, and lastly comparing the result with the root hash stored in the Blockchain. It is almost impossible for the Server to change the content and sending fake hashes for matching the hash stored in the Blockchain, since the hash functions are robust to this attack.\\
-Two Smart Contracts have been written for the scope:
-\begin{itemize}
-	\item \textbf{ObjectsMerkleTree}: each instance of this contract has the root hash of a Merkle Tree. The contract provides methods to calculate, store and check the root hash of four objects;
-	\item \textbf{MerkleTreeMap}: only one instance of this contract is required. 
-	It maps objects to their Merkle Tree.
-\end{itemize}
+MerkleTrees are implemented using the \texttt{ObjectsMerkleTree} Smart Contract.
+Each instance of this contract has in its storage the root hash of the Merkle Tree composed by a group of four related objects. The contract also provides methods to calculate, store and check the root hash.\\
+To check if an object is intact, when the Clients requests that object, the Server sends it with also the hashes of the related objects. Then it is sufficient to calculate the root hash of the new Tree composed by the calculated hash of the received object and the hashes of the related objects in the right order, and lastly comparing the result with the root hash stored in the \textit{Hashes Blockchain}. It is almost impossible for the Server to change the object and sending fake hashes for matching the hash stored in the Blockchain, since the hash functions are robust to this attack.\\
+To understand which Merkle Tree an object belongs the \texttt{MerkleTreeMap} contract has been used, which maps names to \texttt{ObjectsMerkleTree} instance addresses, but in the future a block explorer should be used. 
 
 
 \section{Future Works}
-
 The presented system has been developed on Ethereum, but it limits the code execution of Smart Contracts imposing gas payment. Some instruction like loops can be very expensive, thus it may not be the best enviroment for the scope. A new ad-hoc Blockchain could be implemented for the content distribution, to better fit the requirments. 
 Another improvment could be replacing the data of the content in the \textit{Content Blockchain} with an URI or another type of storage to permit Servers to contain also other objects, depending on the situation.
 The idea of using a secure URI would lead to the creation a global Blockchain for content distribution, which different services and websites can entrust with their content. For example, every service can have its own Blockchain, and in the global Blockchain could be links to these Blockchains.
