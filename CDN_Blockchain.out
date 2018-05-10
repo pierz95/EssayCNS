@@ -1,18 +1,17 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Related Works}{}% 2
 \BOOKMARK [1][-]{section.3}{Blockchain Technology}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Ethereum}{section.3}% 4
-\BOOKMARK [3][-]{subsubsection.3.1.1}{Smart Contracts}{subsection.3.1}% 5
-\BOOKMARK [2][-]{subsection.3.2}{Benefits}{section.3}% 6
-\BOOKMARK [1][-]{section.4}{System Design}{}% 7
-\BOOKMARK [2][-]{subsection.4.1}{Overview}{section.4}% 8
-\BOOKMARK [3][-]{subsubsection.4.1.1}{Content Blockchain}{subsection.4.1}% 9
-\BOOKMARK [3][-]{subsubsection.4.1.2}{Hashes Blockchain}{subsection.4.1}% 10
-\BOOKMARK [2][-]{subsection.4.2}{Typical Usage}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.3}{Benefits and Drawbacks}{section.4}% 12
-\BOOKMARK [1][-]{section.5}{Implementation}{}% 13
-\BOOKMARK [2][-]{subsection.5.1}{Content Blockchain}{section.5}% 14
-\BOOKMARK [2][-]{subsection.5.2}{Hashes Blockchain}{section.5}% 15
-\BOOKMARK [1][-]{section.6}{Future Works}{}% 16
-\BOOKMARK [1][-]{section.7}{Conclusion}{}% 17
-\BOOKMARK [1][-]{section*.1}{References}{}% 18
+\BOOKMARK [2][-]{subsection.3.1}{Ethereum and Smart Contracts}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Benefits}{section.3}% 5
+\BOOKMARK [1][-]{section.4}{System Design}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{Overview}{section.4}% 7
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Content Blockchain}{subsection.4.1}% 8
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Hashes Blockchain}{subsection.4.1}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Typical Usage}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{Benefits and Drawbacks}{section.4}% 11
+\BOOKMARK [1][-]{section.5}{Implementation}{}% 12
+\BOOKMARK [2][-]{subsection.5.1}{Content Blockchain}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.2}{Hashes Blockchain}{section.5}% 14
+\BOOKMARK [1][-]{section.6}{Future Works}{}% 15
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 16
+\BOOKMARK [1][-]{section*.1}{References}{}% 17

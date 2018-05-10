@@ -432,39 +432,39 @@ In this work Blockchain technology is used. In \cite{kishigami2015blockchain} a 
 
 
 \section{Blockchain Technology}
-After the rise of Bitcoin \cite{nakamoto2008bitcoin}, its underlying structure, the Blockchain technology, has been applied to a variety of usecases ranging from authentication \cite{sundararajanonline} (using Ethereum and Smart Contracts) to medical reports\cite{azaria2016medrec}. Blockchain is based on an append-only ledger, a growing list of records (called blocks) which are linked and secured using cryptography. The ledger can be viewed by all participating nodes and the updates are permitted only after the consensum of the network. Each block typically contains a cryptographic hash of the previous block, a timestamp and transaction data. Thanks to its structure and the proof-of-work required to create a new block, a Blockchain is inherently resistant to modification of the data. A simple example of Blockchain is shown in Figure \ref{fig:blockchain}.\\
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=3.8in]{images/blockchain.jpg}
-	
-	\caption{Example of a Blockchain. Transactions are stored onto the blocks of the Ledger. Blocks are linked by hashes.}
-	\label{fig:blockchain}
-\end{figure} 
+After the rise of Bitcoin \cite{nakamoto2008bitcoin}, its underlying structure, the Blockchain technology, has been applied to a variety of usecases ranging from authentication \cite{sundararajanonline} (using Ethereum and Smart Contracts) to medical reports\cite{azaria2016medrec}. Blockchain is based on an append-only ledger, a growing list of records (called blocks) which are linked and secured using cryptography. The ledger can be viewed by all participating nodes and the updates are permitted only after the consensum of the network. Each block typically contains a cryptographic hash of the previous block, a timestamp and transaction data. %Thanks to its structure and the proof-of-work required to create a new block, a Blockchain is inherently resistant to modification of the data. 
+%A simple example of Blockchain is shown in Figure \ref{fig:blockchain}.\\
+%\begin{figure}[!h]
+%	\centering
+%	\includegraphics[width=3.8in]{images/blockchain.jpg}
+%	
+%	\caption{Example of a Blockchain. Transactions are stored onto the blocks of the Ledger. Blocks are linked by hashes.}
+%	\label{fig:blockchain}
+%\end{figure} 
+The presented system relies on Ethereum, an open-source, public, Blockchain-based distributed computing platform. %, which allows the execution of Smart Contracts, immutable programs always visible from the community.
 
-The presented system relies on Ethereum, an open-source, public, Blockchain-based distributed computing platform, which allows the execution of Smart Contracts, immutable programs always visible from the community.
 
-
-\subsection{Ethereum}
+\subsection{Ethereum and Smart Contracts}
 Ethereum \cite{wood2014ethereum} is described as "a transactional singleton machine with shared-state". 
 The distributed ledger can be viewed as a distributed virtual machine which records transactions and state changes.
-The Blockchain is kept alive by the miners nodes which have three main tasks:
-\begin{itemize}
-	\item Verifing the transactions being sent, through the consensum algorithm which is similar to other Blockchains, removing the need of central authority;
-	\item Checking if the sender has sufficient gas, the Ethereum's native cryptocurrency, to transfer to the receiver;
-	\item Running the function called by the sender and thus to modify the Blockchain state accordingly. 
-\end{itemize}
-
-In regards to the third point, we see the most important feature of Ethereum: encoding Smart Contracts. 
-
-
-\subsubsection{Smart Contracts}
-
+The most important feature of Ethereum is encoding Smart Contracts.\\
+%The Blockchain is kept alive by the miners nodes which have three main tasks:
+%\begin{itemize}
+%	\item Verifing the transactions being sent, through the consensum algorithm which is similar to other Blockchains, removing the need of central authority;
+%	\item Checking if the sender has sufficient gas, the Ethereum's native cryptocurrency, to transfer to the receiver;
+%	\item Running the function called by the sender and thus to modify the Blockchain state accordingly. 
+%\end{itemize}
+%In regards to the third point, we see the most important feature of Ethereum: encoding Smart Contracts. 
+%The most important feature of Ethereum is encoding Smart Contracts.
+%\subsubsection{Smart Contracts}
 Smart Contracts describe functions, which can be called by nodes participating in the Blockchain, and states which can be changed by the nodes. 
-The functions run in the Ethereum Virtual Machine (EVM)
-which is described as a "\textit{quasi}-Turing complete" computer able to execute code of any complexity. The \textit{quasi} qualification comes from the
-fact that the computation is intrinsically bounded to \textit{gas}, which limits the total amount of computation done.
-If the gas transferred to the miner for the function execution is less than the required amount, then the transaction is not carried out.  
-\\The contract can use memory and storage to save data. It can use any amount of memory (paying gas) during the execution of its code, but when execution ends, the entire content of the memory is wiped. The storage on the other hand is persisted into the Blockchain itself. It can be changed, but all the changes will be recorded onto the ledger.\\
+The functions run in the Ethereum Virtual Machine (EVM),
+%which is described as a "\textit{quasi}-Turing complete" computer able to execute code of any complexity. The \textit{quasi} qualification comes from the
+%fact that the computation is intrinsically bounded to \textit{gas}, which limits the total amount of computation done.
+a Turing complete computer able to execute code of any complexity.
+%If the gas transferred to the miner for the function execution is less than the required amount, then the transaction is not carried out.  
+The contract can use memory and storage to save data: % It can use any amount of memory (paying gas) during the execution of its code, but when execution ends, the entire content of the memory is wiped. The storage on the other hand is persisted into the Blockchain itself. It can be changed, but all the changes will be recorded onto the ledger.\\
+memory is volatile while storage persist over time. The last can be changed, but all the changes will be recorded onto the ledger.\\
 In the presented sytem, thanks to its persistence and (im)mutability, storage will be used to store and share content. 
 
 
